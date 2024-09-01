@@ -1,3 +1,125 @@
-body {
-    background-color: skyblue;
+/******************** NAVBAR***************************/
+
+.image-navbar img {
+  width: 25%;
+  height: 25%;
+  border-radius: 100%;
+}
+
+.bc-navbar {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  width: 100%;
+  z-index: 99;
+}
+
+/************************* SCC FOR HOME PAGE  << SECTION >> ****************/
+.name {
+  padding-top: 60px;
+}
+
+@media screen and (min-width: 360px) {
+  .name {
+    padding-top: 100px;
+  }
+
+  .nav-items {
+    padding-top: 15px;
+  }
+}
+
+.banners {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../img/image1.jpeg") center center fixed no-repeat;
+  height: 600px;
+  background-size: cover;
+}
+
+/******************* CSS FOR REGISTER ****************/
+.p1-register {
+  padding-top: 60px;
+}
+
+@media screen and (min-width: 360px) {
+  .p1-register {
+    padding-top: 105px;
+  }
+
+  .nav-items {
+    padding-top: 15px;
+  }
+}
+
+@media screen and (min-width: 836px) {
+  form {
+    max-width: 696px;
+  }
+}
+
+@media screen and (min-width: 908px) {
+  .p1-register {
+    max-width: 936px;
+  }
+}
+
+/************************* CSS FOR LOGIN **********************/
+.h1-login {
+  padding-top: 130px;
+}
+
+.login-form {
+  margin-bottom: 150px;
+}
+
+@media screen and (min-width: 768px) {
+  .question {
+    display: flex;
+  }
+}
+
+/************************ CSS FOR WORSPACE ******************/
+
+.worspace {
+  padding-top: 60px;
+}
+
+@media screen and (min-width: 360px) {
+  .worspace {
+    padding-top: 130px;
+  }
+}
+
+/****************************** FOOTER**************************/
+.socialIcons {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.socialIcons a {
+  text-decoration: none;
+}
+
+.socialIcons .card {
+  width: 150px;
+  height: 140px;
+  box-shadow: 0px 5px 0px black;
+}
+
+.socialIcons i {
+  font-size: 3em;
+  opacity: 0.9;
+}
+
+.socialIcons .title {
+  font-size: 2em;
+}
+
+.socialIcons .card:hover {
+  border: 2px skyblue solid;
+  box-shadow: 0px 5px 0px skyblue;
+}
+
+.copy {
+  font-size: 1.5em;
 }
