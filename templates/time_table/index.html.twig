@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %} {% block title %}TimeTable index{% endblock %} {%
+block body %}
+<div class="container">
+  <h1 class="worspace">Les horaires du travaille</h1>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for time_table in time_tables %}
+      <tr>
+        <td>{{ time_table.id }}</td>
+        <td>{{ time_table.name }}</td>
+        <td>
+          <a
+            class="btn btn-secondary"
+            href="{{ path('app_time_table_show', { id: time_table.id }) }}"
+            >show</a
+          >
+          <a
+            class="btn btn-success"
+            href="{{ path('app_time_table_edit', { id: time_table.id }) }}"
+            >edit</a
+          >
+        </td>
+      </tr>
+      {% else %}
+      <tr>
+        <td colspan="3">no records found</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <a class="btn btn-success" href="{{ path('app_time_table_new') }}"
+    >Create new</a
+  >
+</div>
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %} {% block title %}New Matter{% endblock %} {%
+block body %}
+<div class="container">
+  <h1 class="worspace workspace1">Créer une nouvelle matière</h1>
+  <div class="mb-4">
+    {{ include("matter/_form.html.twig") }}
+  </div>
+  <a class="btn btn-success workspace1" href="{{ path('app_matter_index') }}"
+    >back to list</a
+  >
+</div>
+
+{% endblock %}

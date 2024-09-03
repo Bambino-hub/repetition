@@ -10,7 +10,7 @@
       </ul>
       <ul class="navbar-nav nav-items">
         <div class="d-flex pt-2">
-          {# {% if app.user == false %} #}
+          {% if app.user == false %}
 
           <li class="nav-item me-3">
             <a class="nav-link" href="{{ path('app_register') }}"
@@ -20,7 +20,7 @@
           <li class="nav-item me-3">
             <a class="nav-link" href="{{ path('app_login') }}">connxion</a>
           </li>
-          {# {% else %} #} {#
+          {% else %}
           <li class="nav-item dropdown me-5">
             <a
               class="nav-link dropdown-toggle"
@@ -59,13 +59,11 @@
               </li>
             </ul>
           </li>
-          #}
-
           <li class="nav-item me-3">
             <a class="nav-link" href="{{ path('app_logout') }}">Deconnxion</a>
           </li>
 
-          {# {% endif %} #}
+          {% endif %}
         </div>
       </ul>
     </div>

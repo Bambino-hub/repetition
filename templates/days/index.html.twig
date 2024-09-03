@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %} {% block title %}Days index{% endblock %} {%
+block body %}
+<div class="container">
+  <h1 class="worspace">Les jours de travaille</h1>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for day in days %}
+      <tr>
+        <td>{{ day.id }}</td>
+        <td>{{ day.name }}</td>
+        <td>
+          <a
+            class="btn btn-secondary"
+            href="{{ path('app_days_show', { id: day.id }) }}"
+            >show</a
+          >
+          <a
+            class="btn btn-success"
+            href="{{ path('app_days_edit', { id: day.id }) }}"
+            >edit</a
+          >
+        </td>
+      </tr>
+      {% else %}
+      <tr>
+        <td colspan="3">no records found</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <a class="btn btn-primary" href="{{ path('app_days_new') }}">Create new</a>
+</div>
+
+{% endblock %}

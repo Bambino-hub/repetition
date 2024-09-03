@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %} {% block title %}New Level{% endblock %} {% block
+body %}
+<div class="container">
+  <h1 class="worspace workspace1">Create new Level</h1>
+
+  {{ include("level/_form.html.twig") }}
+
+  <a class="btn btn-success workspace1" href="{{ path('app_level_index') }}"
+    >back to list</a
+  >
+</div>
+{% endblock %}

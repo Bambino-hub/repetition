@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %} {% block title %}New Days{% endblock %} {% block
+body %}
+<div class="container">
+  <h1 class="worspace workspace1">Créer les jours de travaille</h1>
+
+  {{ include("days/_form.html.twig") }}
+
+  <a class="btn btn-success workspace1" href="{{ path('app_days_index') }}"
+    >back to list</a
+  >
+</div>
+{% endblock %}

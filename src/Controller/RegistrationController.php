@@ -20,9 +20,7 @@ use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 
 class RegistrationController extends AbstractController
 {
-    public function __construct(private EmailVerifier $emailVerifier)
-    {
-    }
+    public function __construct(private EmailVerifier $emailVerifier) {}
 
     #[Route('/register', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, Security $security, EntityManagerInterface $entityManager): Response
@@ -35,6 +33,9 @@ class RegistrationController extends AbstractController
             /** @var string $plainPassword */
             $plainPassword = $form->get('plainPassword')->getData();
 
+            // set created At
+            $user->setCreatedAt(new \DateTimeImmutable());
+
             // encode the plain password
             $user->setPassword($userPasswordHasher->hashPassword($user, $plainPassword));
 
@@ -42,7 +43,9 @@ class RegistrationController extends AbstractController
             $entityManager->flush();
 
             // generate a signed url and email it to the user
-            $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
+            $this->emailVerifier->sendEmailConfirmation(
+                'app_verify_email',
+                $user,
                 (new TemplatedEmail())
                     ->from(new Address('hoberenakbambino@gmail.com', 'Bambino'))
                     ->to((string) $user->getEmail())
@@ -52,11 +55,13 @@ class RegistrationController extends AbstractController
 
             // do anything else you need here, like send an email
 
+            $this->addFlash('success', "Vous avez reçu un email de confirmation veillez cliquer dessus pour continuer");
+
             return $security->login($user, AppAuthenticator::class, 'main');
         }
 
         return $this->render('registration/register.html.twig', [
-            'registrationForm' => $form,
+            'form' => $form,
         ]);
     }
 

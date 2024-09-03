@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -47,6 +49,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column]
     private bool $isVerified = false;
+
+    /**
+     * @var Collection<int, WorkSpace>
+     */
+    #[ORM\OneToMany(targetEntity: WorkSpace::class, mappedBy: 'user')]
+    private Collection $workSpaces;
+
+    public function __construct()
+    {
+        $this->workSpaces = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -179,6 +192,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setVerified(bool $isVerified): static
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, WorkSpace>
+     */
+    public function getWorkSpaces(): Collection
+    {
+        return $this->workSpaces;
+    }
+
+    public function addWorkSpace(WorkSpace $workSpace): static
+    {
+        if (!$this->workSpaces->contains($workSpace)) {
+            $this->workSpaces->add($workSpace);
+            $workSpace->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeWorkSpace(WorkSpace $workSpace): static
+    {
+        if ($this->workSpaces->removeElement($workSpace)) {
+            // set the owning side to null (unless already changed)
+            if ($workSpace->getUser() === $this) {
+                $workSpace->setUser(null);
+            }
+        }
 
         return $this;
     }

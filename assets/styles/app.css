@@ -1,9 +1,29 @@
+/********************Les polices utilisées********************/
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Redressed&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Redressed&display=swap");
+
+.merri {
+  font-family: "Merriweather", serif;
+}
+
+.redress {
+  font-family: "Redressed", cursive;
+}
+
 /******************** NAVBAR***************************/
 
 .image-navbar img {
   width: 25%;
   height: 25%;
   border-radius: 100%;
+}
+
+@media screen and (max-width: 360px) {
+  .image-navbar img {
+    width: 60%;
+    height: 60%;
+    border-radius: 100%;
+  }
 }
 
 .bc-navbar {
@@ -13,7 +33,7 @@
   z-index: 99;
 }
 
-/************************* SCC FOR HOME PAGE  << SECTION >> ****************/
+/************************* CSS FOR HOME PAGE  << SECTION >> ****************/
 .name {
   padding-top: 60px;
 }
@@ -33,6 +53,10 @@
     url("../img/image1.jpeg") center center fixed no-repeat;
   height: 600px;
   background-size: cover;
+}
+
+.carousel-item img {
+  height: 450px;
 }
 
 /******************* CSS FOR REGISTER ****************/
