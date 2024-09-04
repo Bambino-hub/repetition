@@ -51,11 +51,16 @@ class WorkSpaceController extends AbstractController
     #[Route('/work/space/all', name: 'app_work_space_all')]
     #[IsGranted('ROLE_ADMIN')]
     public function getAllWorkSpace(
+        Request $request,
         WorkSpaceRepository $workSpaceRepository
     ): Response {
 
+        // on recupère la page courrante s'il n'y a pas on met par défaut 1
+        $page = $request->query->getInt('page', 1);
+        $work = $workSpaceRepository->pagination($page);
+
         return $this->render('work_space/work_all.html.twig', [
-            'workspaces' => $workSpaceRepository->findAll()
+            'workspaces' => $work
         ]);
     }
 }
