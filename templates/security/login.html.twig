@@ -2,17 +2,6 @@
 body %}
 <div class="container">
   <form method="post" class="login-form">
-    {% if error %}
-    <div class="alert alert-danger">
-      {{ error.messageKey|trans(error.messageData, 'security') }}
-    </div>
-    {% endif %} {% if app.user %}
-    <div class="mb-3">
-      You are logged in as {{ app.user.userIdentifier }},
-      <a href="{{ path('app_logout') }}">Logout</a>
-    </div>
-    {% endif %}
-
     <h1 class="h3 mb-3 font-weight-normal h1-login">Se connecter</h1>
     <label for="inputFirstname">Email ou nom</label>
     <input
@@ -46,7 +35,9 @@ body %}
     <div class="question">
       <span class="me-5"
         >Mot de passe oublié ?
-        <a class="btn btn-danger" href="#"> Cliquez ici</a></span
+        <a class="btn btn-danger" href="{{ path('forgot.password') }}">
+          Cliquez ici</a
+        ></span
       >
       <br />
       <br />
@@ -59,7 +50,17 @@ body %}
         >
       </span>
     </div>
-    <button class="btn btn-lg btn-primary" type="submit">Sign in</button>
+    <button class="btn btn-lg btn-primary mb-5" type="submit">Connexion</button>
+    {% if error %}
+    <div class="alert alert-danger">
+      {{ error.messageKey|trans(error.messageData, 'security') }}
+    </div>
+    {% endif %} {% if app.user %}
+    <div class="mb-3">
+      You are logged in as {{ app.user.userIdentifier }},
+      <a href="{{ path('app_logout') }}">Logout</a>
+    </div>
+    {% endif %}
   </form>
 </div>
 

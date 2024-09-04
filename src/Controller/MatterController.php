@@ -6,12 +6,14 @@ use App\Entity\Matter;
 use App\Form\MatterType;
 use App\Repository\MatterRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-#[Route('/matter')]
+#[Route('/admin/repetition/matter')]
+#[IsGranted('ROLE_ADMIN')]
 final class MatterController extends AbstractController
 {
     #[Route(name: 'app_matter_index', methods: ['GET'])]
@@ -71,7 +73,7 @@ final class MatterController extends AbstractController
     #[Route('/{id}', name: 'app_matter_delete', methods: ['POST'])]
     public function delete(Request $request, Matter $matter, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$matter->getId(), $request->getPayload()->getString('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $matter->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($matter);
             $entityManager->flush();
         }

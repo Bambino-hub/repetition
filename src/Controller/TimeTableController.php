@@ -6,12 +6,14 @@ use App\Entity\TimeTable;
 use App\Form\TimeTableType;
 use App\Repository\TimeTableRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-#[Route('/time/table')]
+#[Route('/admin/repetion/time/table')]
+#[IsGranted('ROLE_ADMIN')]
 final class TimeTableController extends AbstractController
 {
     #[Route(name: 'app_time_table_index', methods: ['GET'])]
@@ -71,7 +73,7 @@ final class TimeTableController extends AbstractController
     #[Route('/{id}', name: 'app_time_table_delete', methods: ['POST'])]
     public function delete(Request $request, TimeTable $timeTable, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$timeTable->getId(), $request->getPayload()->getString('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $timeTable->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($timeTable);
             $entityManager->flush();
         }

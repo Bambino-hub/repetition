@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\MatterRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: MatterRepository::class)]
 class Matter
@@ -14,9 +15,10 @@ class Matter
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank('', 'Ce champ ne doit pas être vide')]
     private ?string $name = null;
 
-    #[ORM\ManyToOne(inversedBy: 'matters')]
+    #[ORM\ManyToOne(inversedBy: 'matters', cascade: ['persist'])]
     private ?WorkSpace $workspace = null;
 
     public function getId(): ?int

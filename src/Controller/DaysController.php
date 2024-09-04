@@ -6,12 +6,14 @@ use App\Entity\Days;
 use App\Form\DaysType;
 use App\Repository\DaysRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-#[Route('/days')]
+#[Route('/admin/repetion/days')]
+#[IsGranted('ROLE_ADMIN')]
 final class DaysController extends AbstractController
 {
     #[Route(name: 'app_days_index', methods: ['GET'])]
@@ -71,7 +73,7 @@ final class DaysController extends AbstractController
     #[Route('/{id}', name: 'app_days_delete', methods: ['POST'])]
     public function delete(Request $request, Days $day, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$day->getId(), $request->getPayload()->getString('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $day->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($day);
             $entityManager->flush();
         }

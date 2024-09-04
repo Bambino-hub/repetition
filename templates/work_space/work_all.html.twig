@@ -1,0 +1,55 @@
+{% extends "base.html.twig" %} {% block title %}Tous les élèves{% endblock %} {%
+block body %}
+<div class="container">
+  <h1 class="worspace">Liste des élèves inscrits</h1>
+  {% for workspace in workspaces %}
+
+  <h2>Elève numero: {{ workspace.id }}</h2>
+  <table class="table table-success table-striped">
+    <thead>
+      <th>Nom</th>
+      <th>Prénom</th>
+      <th>Contact</th>
+      <th>Classe</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ workspace.user.lastname }}</td>
+        <td>{{ workspace.user.firstname }}</td>
+        <td>{{ workspace.user.telephone }}</td>
+        <td>{{ workspace.level.name }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Emploi du temps</h3>
+  <table class="table table-success table-striped">
+    <thead>
+      <th>Matières</th>
+      <th>Jour de travail</th>
+      <th>Heure de travaille</th>
+    </thead>
+    <tbody>
+<tr>
+
+      {% for matter in workspace.matters %}
+    
+      <tr>
+        <td>{{ matter.name }}</td>
+      </tr>
+      {% endfor %} {% for day in workspace.days %}
+<tr>
+      <td>{{ day.name }}</td>
+</tr>
+      {% endfor %} {% for time in workspace.timeTables %}
+      <tr>
+        <td>{{ time.name }}</td>
+      </tr>
+      {% endfor %}
+</tr>
+
+    </tbody>
+  </table>
+  {% endfor %}
+</div>
+{% endblock %}

@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Days;
 use App\Entity\User;
 use App\Entity\Level;
 use App\Entity\Matter;
@@ -29,6 +30,15 @@ class WorkSpaceType extends AbstractType
             ->add('matters', EntityType::class, [
                 'label'  =>   'Les matières dans lesquelles vous souhaitez travailler',
                 'class' => Matter::class,
+                'choice_label' => 'name',
+                'multiple' => true,
+                'expanded' => true,
+                'by_reference' => false
+
+            ])
+            ->add('days', EntityType::class, [
+                'label'  =>   'Jour de travail',
+                'class' => Days::class,
                 'choice_label' => 'name',
                 'multiple' => true,
                 'expanded' => true,

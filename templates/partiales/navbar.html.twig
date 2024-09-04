@@ -20,7 +20,8 @@
           <li class="nav-item me-3">
             <a class="nav-link" href="{{ path('app_login') }}">connxion</a>
           </li>
-          {% else %}
+          {% else %} {% if is_granted('ROLE_ADMIN') %}
+
           <li class="nav-item dropdown me-5">
             <a
               class="nav-link dropdown-toggle"
@@ -55,10 +56,28 @@
                 >
               </li>
               <li>
-                <a class="dropdown-item" href="#">Elèves</a>
+                <a class="dropdown-item" href="{{ path('app_work_space_all') }}"
+                  >Elèves</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" href="{{ path('app_work_space') }}"
+                  >Choix des matières</a
+                >
               </li>
             </ul>
           </li>
+          {% endif %} {% if is_granted('ROLE_ADMIN') %}
+          <li class="nav-item me-5 d-none">
+            <a class="nav-link" href="{{ path('app_work_space') }}"
+              >Choix des matières</a
+            >
+          </li>
+          {% else %}
+          <li class="nav-item me-5">
+            <a class="nav-link" href="{{ path('app_work_space') }}">Matières</a>
+          </li>
+          {% endif %}
           <li class="nav-item me-3">
             <a class="nav-link" href="{{ path('app_logout') }}">Deconnxion</a>
           </li>

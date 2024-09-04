@@ -34,6 +34,7 @@
 }
 
 /************************* CSS FOR HOME PAGE  << SECTION >> ****************/
+
 .name {
   padding-top: 60px;
 }
@@ -55,9 +56,9 @@
   background-size: cover;
 }
 
-.carousel-item img {
+/* .carousel-item img {
   height: 450px;
-}
+} */
 
 /******************* CSS FOR REGISTER ****************/
 .p1-register {

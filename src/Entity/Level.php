@@ -6,6 +6,8 @@ use App\Repository\LevelRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 #[ORM\Entity(repositoryClass: LevelRepository::class)]
 class Level
@@ -16,12 +18,13 @@ class Level
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank('', 'Ce champ ne doit pas être vide')]
     private ?string $name = null;
 
     /**
      * @var Collection<int, WorkSpace>
      */
-    #[ORM\OneToMany(targetEntity: WorkSpace::class, mappedBy: 'level')]
+    #[ORM\OneToMany(targetEntity: WorkSpace::class, mappedBy: 'level', cascade: ['persist'])]
     private Collection $workSpaces;
 
     public function __construct()

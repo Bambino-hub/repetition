@@ -6,6 +6,8 @@ use App\Repository\WorkSpaceRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 #[ORM\Entity(repositoryClass: WorkSpaceRepository::class)]
 class WorkSpace
@@ -15,28 +17,32 @@ class WorkSpace
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne(inversedBy: 'workSpaces')]
+    #[ORM\ManyToOne(inversedBy: 'workSpaces', cascade: ['remove'])]
     private ?User $user = null;
 
-    #[ORM\ManyToOne(inversedBy: 'workSpaces')]
+    #[ORM\ManyToOne(inversedBy: 'workSpaces', cascade: ['remove'])]
+    #[Assert\NotBlank('', 'Ce champ ne doit pas être vide')]
     private ?Level $level = null;
 
     /**
      * @var Collection<int, Days>
      */
-    #[ORM\OneToMany(targetEntity: Days::class, mappedBy: 'workspace')]
+    #[ORM\OneToMany(targetEntity: Days::class, mappedBy: 'workspace', cascade: ['remove'])]
+    #[Assert\NotBlank('', 'Ce champ ne doit pas être vide')]
     private Collection $days;
 
     /**
      * @var Collection<int, Matter>
      */
-    #[ORM\OneToMany(targetEntity: Matter::class, mappedBy: 'workspace')]
+    #[ORM\OneToMany(targetEntity: Matter::class, mappedBy: 'workspace', cascade: ['remove'])]
+    #[Assert\NotBlank('', 'Ce champ ne doit pas être vide')]
     private Collection $matters;
 
     /**
      * @var Collection<int, TimeTable>
      */
-    #[ORM\OneToMany(targetEntity: TimeTable::class, mappedBy: 'workspace')]
+    #[ORM\OneToMany(targetEntity: TimeTable::class, mappedBy: 'workspace', cascade: ['remove'])]
+    #[Assert\NotBlank('', 'Ce champ ne doit pas être vide')]
     private Collection $timeTables;
 
     public function __construct()
