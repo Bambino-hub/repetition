@@ -56,11 +56,11 @@ class WorkSpaceController extends AbstractController
     ): Response {
 
         // on recupère la page courrante s'il n'y a pas on met par défaut 1
-        $page = $request->query->getInt('page', 1);
-        $work = $workSpaceRepository->pagination($page);
+        // $page = $request->query->getInt('page', 1);
+        // $work = $workSpaceRepository->pagination($page);
 
         return $this->render('work_space/work_all.html.twig', [
-            'workspaces' => $work
+            'workspaces' => $workSpaceRepository->findAll()
         ]);
     }
 }

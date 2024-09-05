@@ -18,17 +18,17 @@ class WorkSpaceRepository extends ServiceEntityRepository
         parent::__construct($registry, WorkSpace::class);
     }
 
-    public function pagination(int $page): PaginationInterface
-    {
-        return $this->paginatorInterface->paginate(
-            $this->createQueryBuilder('w'),
-            $page,
-            10,
-            [
-                'distinct' => false
-            ]
-        );
-    }
+    // public function pagination(int $page): PaginationInterface
+    // {
+    //     return $this->paginatorInterface->paginate(
+    //         $this->createQueryBuilder('w'),
+    //         $page,
+    //         10,
+    //         [
+    //             'distinct' => false
+    //         ]
+    //     );
+    // }
     //    /**
     //     * @return WorkSpace[] Returns an array of WorkSpace objects
     //     */

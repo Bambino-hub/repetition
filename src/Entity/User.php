@@ -24,7 +24,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?int $id = null;
 
     #[ORM\Column(length: 180)]
-    #[Assert\NotBlank('', 'Ce champ ne doit pas être vide')]
+    #[Assert\NotBlank([], 'Ce champ ne doit pas être vide')]
+
     private ?string $firstname = null;
 
     /**
@@ -37,7 +38,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @var string The hashed password
      */
     #[ORM\Column]
-    #[Assert\NotBlank('', 'Ce champ ne doit pas être vide')]
+    #[Assert\NotBlank([], 'Ce champ ne doit pas être vide')]
+
     private ?string $password = null;
 
     #[ORM\Column(length: 255)]
@@ -45,14 +47,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $email = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\NotBlank('', 'Ce champ ne doit pas être vide')]
+    #[Assert\NotBlank([], 'Ce champ ne doit pas être vide')]
+
     private ?string $lastname = null;
 
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\NotBlank('', 'Ce champ ne doit pas être vide')]
+    #[Assert\NotBlank([], 'Ce champ ne doit pas être vide')]
+
     private ?string $telephone = null;
 
     #[ORM\Column]

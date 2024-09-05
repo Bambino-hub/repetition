@@ -30,31 +30,23 @@ block body %}
       <th>Heure de travaille</th>
     </thead>
     <tbody>
-<tr>
-
       {% for matter in workspace.matters %}
-    
+
       <tr>
         <td>{{ matter.name }}</td>
       </tr>
       {% endfor %} {% for day in workspace.days %}
-<tr>
-      <td>{{ day.name }}</td>
-</tr>
+      <tr>
+        <td>{{ day.name }}</td>
+      </tr>
       {% endfor %} {% for time in workspace.timeTables %}
       <tr>
         <td>{{ time.name }}</td>
       </tr>
       {% endfor %}
-</tr>
-
     </tbody>
   </table>
-  <br>
-  <br>
-  {% endfor %}
-{{knp_pagination_render(workspaces)}}
-
+  {% endfor %} {# {{ knp_pagination_render(workspaces) }} #}
 </div>
 
 {% endblock %}
