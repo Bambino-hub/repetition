@@ -1,10 +1,10 @@
 {% extends "base.html.twig" %} {% block title %}Tous les élèves{% endblock %} {%
 block body %}
 <div class="container">
-  <h1 class="worspace">Liste des élèves inscrits</h1>
-  {% for workspace in workspaces %}
+  <h1 class="worspace mb-3">Liste des élèves inscrits</h1>
+  {% for programme in programmes %}
 
-  <h2>Elève numero: {{ workspace.id }}</h2>
+  <h2 class="mb-3">Elève numero: {{ programme.id }}</h2>
   <table class="table table-success table-striped">
     <thead>
       <th>Nom</th>
@@ -14,10 +14,10 @@ block body %}
     </thead>
     <tbody>
       <tr>
-        <td>{{ workspace.user.lastname }}</td>
-        <td>{{ workspace.user.firstname }}</td>
-        <td>{{ workspace.user.telephone }}</td>
-        <td>{{ workspace.level.name }}</td>
+        <td>{{ programme.user.lastname }}</td>
+        <td>{{ programme.user.firstname }}</td>
+        <td>{{ programme.user.telephone }}</td>
+        <td>{{ programme.level }}</td>
       </tr>
     </tbody>
   </table>
@@ -30,31 +30,30 @@ block body %}
       <th>Heure de travaille</th>
     </thead>
     <tbody>
-<tr>
-
-      {% for matter in workspace.matters %}
-    
-      <tr>
-        <td>{{ matter.name }}</td>
-      </tr>
-      {% endfor %} {% for day in workspace.days %}
-<tr>
-      <td>{{ day.name }}</td>
-</tr>
-      {% endfor %} {% for time in workspace.timeTables %}
-      <tr>
-        <td>{{ time.name }}</td>
-      </tr>
-      {% endfor %}
-</tr>
-
+      <td>
+        {% for matter in programme.matter %}
+        {{ matter }}
+        <br />
+        {% endfor %}
+      </td>
+      <td>
+        {% for day in programme.days %}
+        {{ day }}
+        <br />
+        {% endfor %}
+      </td>
+      <td>
+        {% for time in programme.timeTable %}
+        {{ time }}
+        <br />
+        {% endfor %}
+      </td>
     </tbody>
   </table>
-  <br>
-  <br>
+  <br />
+  <br />
   {% endfor %}
-{{knp_pagination_render(workspaces)}}
-
+  {{ knp_pagination_render(programmes) }}
 </div>
 
 {% endblock %}

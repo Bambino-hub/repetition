@@ -15,7 +15,8 @@ class TimeTable
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\NotBlank('', 'Ce champ ne doit pas être vide')]
+    #[Assert\NotBlank([], 'Ce champ ne doit pas être vide')]
+
     private ?string $name = null;
 
     #[ORM\ManyToOne(inversedBy: 'timeTables', cascade: ['persist'])]
