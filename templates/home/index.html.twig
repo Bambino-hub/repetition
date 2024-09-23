@@ -6,10 +6,9 @@
 
     <div class="d-flex justify-content-center font redress">
       << Rien dans la vie n'est à craindre. tout est à comprendre.>> Marie
-      Curie.
+        Curie.
     </div>
     <br />
-
     <p class="d-flex justify-content-center font redress">
       pour une ascension scolaire brillante dans vos classes, optez pour le
       groupe STELLA SCIENTIA
@@ -18,71 +17,55 @@
       Nous mettons avotre disposition:
     </h3>
     <ul class=" justify-content-center merri">
-     <li>
-      Des répétitions à docmicile dans toutes les classes et toutes séries
-      (6eme en Tle) 
-     </li> 
-     <li>
-      Une assistance pour faciliter votre réussite briante en Maths, PC et SVT
-     </li>
-     <li>
-      Un encadrement de qualité et adapté pour assurer vos devoirs et examens
-      tout au long de l'année
-     </li>
+      <li>
+        Des répétitions à docmicile dans toutes les classes et toutes séries
+        (6eme en Tle)
+      </li>
+      <li>
+        Une assistance pour faciliter votre réussite briante en Maths, PC et SVT
+      </li>
+      <li>
+        Un encadrement de qualité et adapté pour assurer vos devoirs et examens
+        tout au long de l'année
+      </li>
     </ul>
-      {% if is_granted('ROLE_USER') %}
+    {% if is_granted('ROLE_USER') %}
     <p class="d-none ">
       Pour continuer veillez vous INSCRIRE ou vous CONNECTER
     </p>
     {% else %}
-       <p class="d-flex justify-content-center merri"></p>
-      Pour continuer veillez vous <a style="text-decoration: none;" href="{{path('app_register')}}">INSCRIRE</a>  ou vous <a style="text-decoration: none;" href="{{path('app_login')}}">CONNECTER</a> 
+    <p class="d-flex justify-content-center merri"></p>
+    Pour continuer veillez vous <a style="text-decoration: none;" href="{{path('app_register')}}">INSCRIRE</a> ou vous
+    <a style="text-decoration: none;" href="{{path('app_login')}}">CONNECTER</a>
     </p>
     {% endif %}
   </div>
 </section>
 <section>
   <div class="container">
-    <div
-      id="carouselExampleAutoplaying"
-      class="carousel slide"
-      data-bs-ride="carousel"
-    >
+    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img
-            src="{{ asset('/assets/img/graphe1.png') }}"
-            class="d-block w-100"
-            alt="graphe 1"
-          />
+          <img src="{{ asset('/assets/img/graphe1.png') }}" class="d-block w-100" alt="graphe 1" />
         </div>
         <div class="carousel-item">
-          <img
-            src="{{ asset('/assets/img/graphe2.png') }}"
-            class="d-block w-100"
-            alt="graphe 2"
-          />
+          <img src="{{ asset('/assets/img/graphe2.png') }}" class="d-block w-100" alt="graphe 2" />
         </div>
       </div>
-      <button
-        class="carousel-control-prev"
-        type="button"
-        data-bs-target="#carouselExampleAutoplaying"
-        data-bs-slide="prev"
-      >
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+        data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
       </button>
-      <button
-        class="carousel-control-next"
-        type="button"
-        data-bs-target="#carouselExampleAutoplaying"
-        data-bs-slide="next"
-      >
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+        data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
       </button>
     </div>
   </div>
 </section>
+<br>
+<br>
+<br>
 {% include "partiales/footer.html.twig" %} {% endblock %}

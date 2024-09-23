@@ -65,13 +65,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @var Collection<int, WorkSpace>
      */
-    #[ORM\OneToMany(targetEntity: WorkSpace::class, mappedBy: 'user')]
+    #[ORM\OneToMany(targetEntity: WorkSpace::class, mappedBy: 'user', cascade: ['persist'])]
     private Collection $workSpaces;
 
     /**
      * @var Collection<int, Programme>
      */
-    #[ORM\OneToMany(targetEntity: Programme::class, mappedBy: 'user')]
+    #[ORM\OneToMany(targetEntity: Programme::class, mappedBy: 'user', cascade: ['remove'])]
     private Collection $programmes;
 
     public function __construct()

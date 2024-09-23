@@ -22,7 +22,7 @@ class ProgrammeRepository extends ServiceEntityRepository
     public function pagination(int $page): PaginationInterface
     {
         return $this->paginatorInterface->paginate(
-            $this->createQueryBuilder('p'),
+            $this->createQueryBuilder('p')->orderBy('p.id', ' DESC'),
             $page,
             10,
             [

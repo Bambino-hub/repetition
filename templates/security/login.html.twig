@@ -4,50 +4,24 @@ body %}
   <form method="post" class="login-form">
     <h1 class="h3 mb-3 font-weight-normal h1-login">Se connecter</h1>
     <label for="inputFirstname">Email ou nom</label>
-    <input
-      type="text"
-      value="{{ last_username }}"
-      name="firstname"
-      id="inputFirstname"
-      class="form-control"
-      autocomplete="username"
-      required
-      autofocus
-    />
+    <input type="text" value="{{ last_username }}" name="firstname" id="inputFirstname" class="form-control"
+      autocomplete="username" required autofocus />
     <label for="inputPassword">Mot de passe</label>
-    <input
-      type="password"
-      name="password"
-      id="inputPassword"
-      class="form-control"
-      autocomplete="current-password"
-      required
-    />
+    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password"
+      required />
 
-    <input
-      type="hidden"
-      name="_csrf_token"
-      value="{{ csrf_token('authenticate') }}"
-    />
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" />
     <div class="checkbox mb-3">
       <label> <input type="checkbox" name="_remember_me" /> Remember me </label>
     </div>
     <div class="question">
-      <span class="me-5"
-        >Mot de passe oublié ?
+      <span class="me-5">Mot de passe oublié ?
         <a class="btn btn-danger" href="{{ path('forgot.password') }}">
-          Cliquez ici</a
-        ></span
-      >
+          Cliquez ici</a></span>
       <br />
       <br />
-      <span
-        >Pas encore inscrit ?<a
-          class="btn btn-success"
-          href="{{ path('app_register') }}"
-        >
-          S'inscrire</a
-        >
+      <span>Pas encore inscrit ?<a class="btn btn-success" href="{{ path('app_register') }}">
+          S'inscrire</a>
       </span>
     </div>
     <button class="btn btn-lg btn-primary mb-5" type="submit">Connexion</button>
@@ -63,5 +37,5 @@ body %}
     {% endif %}
   </form>
 </div>
-
+{% include "partiales/footer.html.twig" %}
 {% endblock %}
