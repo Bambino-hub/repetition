@@ -45,4 +45,5 @@ class HomeController extends AbstractController
 
         return $this->redirectToRoute('app_all_user', [], Response::HTTP_SEE_OTHER);
     }
+
 }

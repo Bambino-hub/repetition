@@ -1,22 +1,28 @@
-{% extends 'base.html.twig' %} {% block title %}Register{% endblock %} {% block
+{% extends 'base.html.twig' %}
+{% block title %}Register
+{% endblock %}
+{% block
 body %}
-<div class="container">
-  <P class="p1-register">Bienvenue chez STELLA SCIENTIA ! Veuillez remplir ce formulaire pour vous
-    inscrire a nos cours particuliers en Mathématiques, Physique, chimie, et
-    SVT. Nous vous contacterons pour confirmer votre inscription et discuter de
-    vos besoins spécifiques.
-  </P>
-  <h2>Inscription</h2>
-  {% for flash_error in app.flashes('verify_email_error') %}
-  <div class="alert alert-danger my-5" role="alert">{{ flash_error }}</div>
-  {% endfor %}
-  {{ form_start(form) }}
-  {{ form_widget(form) }}
-  <span class="d-flex justify-content-center">Déja inscrit ?
-    <a style="text-decoration: none" href="{{ path('app_login') }}">
-      Se connecté</a></span>
-  <br />
-  <button class="btn btn-primary mb-3" type="submit">S'inscrire</button>
-  {{ form_end(form) }}
-</div>
-{% include "partiales/footer.html.twig" %} {% endblock %}
+	<div class="container">
+		<P class="p1-register">Bienvenue chez STELLA SCIENTIA ! Veuillez remplir ce formulaire pour vous
+			    inscrire a nos cours particuliers en Mathématiques, Physique, chimie, et
+			    SVT. Nous vous contacterons pour confirmer votre inscription et discuter de
+			    vos besoins spécifiques.
+		</P>
+		<h2>Inscription</h2>
+		<div class="container">{% include "partiales/flash.html.twig" %}</div>
+		{% for flash_error in app.flashes('verify_email_error') %}
+			<div class="alert alert-danger my-5" role="alert">{{ flash_error }}</div>
+		{% endfor %}
+		{{ form_start(form) }}
+		{{ form_widget(form) }}
+		<span class="d-flex justify-content-center">Déja inscrit ?
+			<a style="text-decoration: none" href="{{ path('app_login') }}">
+				Se connecté</a>
+		</span>
+		<br/>
+		<button class="btn btn-primary mb-3" type="submit">S'inscrire</button>
+		{{ form_end(form) }}
+	</div>
+	{% include "partiales/footer.html.twig" %}
+{% endblock %}

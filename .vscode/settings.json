@@ -1,0 +1,14 @@
+{
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  "emmet.showSuggestionsAsSnippets": true,
+  "emmet.triggerExpansionOnTab": true,
+     "files.associations": {
+        "*html": "html"
+    },
+  "emmet.useInlineCompletions": true,
+  "emmet.preferences": {
+    
+  }
+}

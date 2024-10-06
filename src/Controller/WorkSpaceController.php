@@ -81,7 +81,7 @@ class WorkSpaceController extends AbstractController
                 $entityManagerInterface->persist($programme);
                 $entityManagerInterface->flush();
 
-                $this->addFlash('success', "Nous avons bien recueillit votre em ploi du temps");
+                $this->addFlash('success', "Nous avons bien recueillit votre emploi du temps");
                 return $this->redirectToRoute('app_home');
             } else {
                 $this->addFlash('danger', "Veillez vous connecter pour continuer");

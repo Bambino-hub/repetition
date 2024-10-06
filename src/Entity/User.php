@@ -38,12 +38,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @var string The hashed password
      */
     #[ORM\Column]
-    #[Assert\NotBlank([], 'Ce champ ne doit pas être vide')]
+    // #[Assert\NotBlank([], 'Ce champ ne doit pas être vide')]
 
     private ?string $password = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\Email(message: 'The email {{ value }} is not a valid email.',)]
+    #[Assert\Email(message: 'The email {{ value }} is not a valid email.', )]
     private ?string $email = null;
 
     #[ORM\Column(length: 255)]
